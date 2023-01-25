@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         fontWeight: "500",
     },
     singleCardButton: {
-        backgroundColor: 'yellow',
+        backgroundColor: 'red',
         padding: 10,
         borderRadius: 6,
         marginTop: 10,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     singleCardButtonText: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: "black",
+        color: "white",
         textAlign: "center",
     }
 })

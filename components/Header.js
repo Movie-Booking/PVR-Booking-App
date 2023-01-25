@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     upcomingBookButton: {
-        backgroundColor: 'yellow',
+        backgroundColor: 'red',
         color: 'black',
         padding: 10,
         borderRadius: 4,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         color: "gray",
     },
     upcomingButtonText: {
-        color: 'black',
+        color: 'white',
         fontSize: 16,
         fontWeight: 'bold',
     }
