@@ -1,10 +1,9 @@
-import { StyleSheet, Text, View, SafeAreaView, Pressable } from 'react-native'
+import { FlatList, StyleSheet, Text, View, SafeAreaView, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import HorizontalDatepicker from '@awrminkhodaei/react-native-horizontal-datepicker';
 import malls from '../data/malls'
-import { FlatList } from 'react-native-web';
 const MovieScreen = () => {
     const mallsData = malls;
     const route = useRoute();
@@ -53,18 +52,18 @@ const MovieScreen = () => {
                 }}
                     style={{ margin: 10 }} key={index}>
                     <Text style={{ fontSize: 16, fontWeight: '500' }}>{item.name}</Text>
-                    {mall.includes(item.name)?(
-                        <FlatList 
+                    {mall.includes(item.name) ? (
+                        <FlatList
                             numColumns={3}
-                            data= {item.showtimes}
-                            renderItem={({item})=>(
-                                <Pressable style={{borderColor:'green',borderWidth:0.5 , margin: 10, padding:10, borderRadius: 6, width: 100}}>
-                                    <Text style={{fontSize:15, color: 'green' , textAlign: 'center'}}>{item}</Text>
+                            data={item.showtimes}
+                            renderItem={({ item }) => (
+                                <Pressable style={{ borderColor: 'green', borderWidth: 0.5, margin: 10, padding: 10, borderRadius: 6, width: 100 }}>
+                                    <Text style={{ fontSize: 15, color: 'green', textAlign: 'center' }}>{item}</Text>
                                 </Pressable>
                             )}
 
                         />
-                    ):(
+                    ) : (
                         null
                     )}
                 </Pressable>
@@ -78,3 +77,5 @@ export default MovieScreen
 
 const styles = StyleSheet.create({
 })
+
+

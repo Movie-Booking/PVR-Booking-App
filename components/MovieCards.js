@@ -1,51 +1,88 @@
-import { StyleSheet, View, Text, FlatList, Image, Pressable } from 'react-native'
+import { Pressable, StyleSheet, Text, View, Image, FlatList, ScrollView } from 'react-native'
 import React from 'react'
 import movies from '../data/movies'
-import Header from './Header'
 import { useNavigation } from '@react-navigation/native'
 
-const MovieCard = () => {
+
+
+const SingleCard = ({ item }) => {
     const navigation = useNavigation();
-    const moviesdata = movies;
     return (
         <View>
-            <FlatList
-                showsVerticalScrollIndicator={false}
-                ListHeaderComponent={Header}
-                numColumns={2}
-                data={moviesdata}
-                renderItem={({ item }) => (
-                    <Pressable style= {{margin:10 ,marginHorizontal:15}}> 
-                        <Image style={styles.moviePoster} source={{ uri: item.image }} />
-                        <Text style={{ fontSize: 16, fontWeight: "600", width: 170, marginTop: 10 }}>{item.name.substring(0,16)}</Text>
-                        <Text style={{ marginTop: 4, fontSize: 15, color: "gray" }} > U/A • {item.language}</Text>
-                        <Text style={{ marginTop: 4, fontSize: 14, fontWeight: "500" }}>{item.genre}</Text>
-                        <Pressable style={styles.bookButton} onPress={()=> navigation.navigate('Movie', {name: item.name})}>
-                            <Text style={{fontSize:14, fontWeight:'500', textAlign: 'center', color: 'white'}}>BOOK</Text>
-                        </Pressable>
-                    </Pressable>
-
-                )}
-            />
+            <Pressable showsVerticalScrollIndicator={false} style={{ margin: 10, marginHorizontal: 15 }}>
+                <Image style={styles.singleCardImage} source={{ uri: item.image }} />
+                <Text style={styles.singleCardTitle}>{item.name.substr(0, 16)}</Text>
+                <Text style={styles.singleCardLanguage}>U/A ‧ {item.language}</Text>
+                <Text style={styles.singleCardGenre}>{item.genre}</Text>
+                <Pressable onPress={() => navigation.navigate('MovieScreen', { name: item.name })} style={styles.singleCardButton} >
+                    <Text style={styles.singleCardButtonText}>Book Now</Text>
+                </Pressable>
+            </Pressable>
         </View>
+    )
 
-    );
 }
 
-export default MovieCard
+
+const MovieCards = () => {
+    // const navigation = useNavigation();
+    const data = movies;
+    return (
+        <View>
+            <ScrollView >
+                <FlatList
+                    data={data}
+                    numColumns={2}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => (
+                        <SingleCard item={item} />
+                    )}
+                />
+            </ScrollView>
+
+        </View>
+    )
+}
+export default MovieCards
+
+
+
+
+
 
 const styles = StyleSheet.create({
-    moviePoster: {
-        width: 160,
-        height: 240,
-        borderRadius: 6
+    singleCardTitle: {
+        fontSize: 16,
+        fontWeight: "600",
+        width: 170,
+        marginTop: 10,
     },
-    bookButton: {
-        backgroundColor: '#DC3558',
+    singleCardImage: {
+        width: 170,
+        height: 240,
+        borderRadius: 6,
+    },
+    singleCardLanguage: {
+        fontSize: 14,
+        color: "gray",
+        marginTop: 4,
+    },
+    singleCardGenre: {
+        fontSize: 14,
+        color: "gray",
+        marginTop: 4,
+        fontWeight: "500",
+    },
+    singleCardButton: {
+        backgroundColor: 'yellow',
         padding: 10,
         borderRadius: 6,
-        marginRight: 10,
         marginTop: 10,
-        width: 100,
     },
+    singleCardButtonText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: "black",
+        textAlign: "center",
+    }
 })

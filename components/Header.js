@@ -1,119 +1,84 @@
-import { ImageBackground, ScrollView, Pressable, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Pressable, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native'
+import React, { useState } from 'react'
+import { Image, ImageBackground } from 'react-native-web'
+import types from '../data/types'
 
-const background = {
-    uri: "https://stat5.bollywoodhungama.in/wp-content/uploads/2020/08/Pathaan-1-1.jpg",
+const backGroundImage = {
+    uri: "https://www.bollywoodhungama.com/wp-content/uploads/2020/08/Pathaan-cover-news.jpg",
+    height: 170,
+    width: "100%"
 }
-
 const Header = () => {
-
-    const types = [
-        {
-            id: '0',
-            name: "IMAX",
-        },
-        {
-            id: '1',
-            name: "4DX",
-        },
-        {
-            id: "2",
-            name: "PXL",
-        },
-        {
-            id: "3",
-            name: "GOLD",
-        },
-        {
-            id: "4",
-            name: "PLAYHOUSE",
-        },
-        {
-            id: "5",
-            name: "ICE",
-        },
-        {
-            id: "6",
-            name: "LUXE",
-        },
-        {
-            id: "7",
-            name: "ONYX",
-        }
-    ]
+    const [movieName, setMovieName] = useState('');
     return (
         <View>
-            <ImageBackground source={background} style={styles.background}>
-                <Pressable style={styles.newReleaseModle}>
-                    <Text style={{ fontSize: 14, fontWeight: '500', color: 'gray' }}>Releasing in 1 day</Text>
-
-
-                    <View style={styles.centerTextandButtonForModal}>
-                        <View>
-                            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>PATHAAN</Text>
-                            <Text style={{ fontSize: 16, fontWeight: '400', color: 'gray', marginTop: 4 }}>2h 26m • HINDI</Text>
-                        </View>
-
-                        <Pressable style={styles.bookButtonForModal}>
-                            <Text style={{ fontSize: 14, fontWeight: '650', textAlign: "center" ,color: 'white' }} >BOOK NOW</Text>
-                        </Pressable>
+            <Image source={backGroundImage} />
+            <View style={styles.upcomingCard}>
+                <Text style={{ fontSize: 14, fontWeight: "500", color: "gray" }}>Releasing in 1 Day</Text>
+                <View style={styles.upcomingMovieContainer}>
+                    <View>
+                        <Text style={{ fontSize: 20, fontWeight: "bold" }}>Pathaan</Text>
+                        <Text style={{ fontSize: 16, fontWeight: "400", color: "gray", marginTop: 4, }} >Release : 25/01/2023</Text>
+                        <Text style={{ fontSize: 16, fontWeight: "400", color: "gray", marginTop: 4, }} >2h 26m ‧ Hindi</Text>
                     </View>
-
-
-                    <Text style={{ marginTop: 8, fontSize: 15, fontWeight: "500" }}>2023 ‧ Drama/Mystery</Text>
-                </Pressable>
-            </ImageBackground>
-
-            <View style={{ marginTop: 110 }}>
-                <ScrollView horizontal={true}  showsHorizontalScrollIndicator={false}>
-                    {types.map((item, index) => (
-                        <View style={styles.theaterTypeNames} key={index}>
-                            <Text>{item.name}</Text>
-                        </View>
-                    ))}
-                </ScrollView>
-
+                    <Pressable style={styles.upcomingBookButton}>
+                        <Text style={styles.upcomingButtonText} >Book Now</Text>
+                    </Pressable>
+                </View>
+                <Text style={styles.upcomingGenre}>Drama/Mystery</Text>
             </View>
+
+
+            <View style={{ marginTop: 100 }} />
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                {types.map((item, index) => (
+                    <View style={{ margin: 10, borderColor: "#C0C0C0", borderWidth: 0.4, borderRadius: 4, padding: 10 }} key={index}>
+                        <Text style={{ textAlign: "center", fontSize: 14, fontWeight: "500", paddingVertical: 0.01 }}>{item.name}</Text>
+                    </View>
+                ))}
+            </ScrollView>
         </View>
-
-
     )
 }
 
 export default Header
 
 const styles = StyleSheet.create({
-    background: {
-        height: 170,
-        aspectRatio: 5 / 2,
-    },
-    newReleaseModle: {
-        position: 'absolute',
+    upcomingCard: {
         backgroundColor: 'white',
-        height: 130,
+        position: 'absolute',
+        marginLeft: '10%',
+        width: "80%",
+        border: "1px solid white",
+        borderRadius: 4,
         padding: 10,
-        borderRadius: 6,
-        top: 140,
-        left: 20,
-        width: '85%'
+        top: 110,
     },
-    bookButtonForModal: {
-        backgroundColor: '#DC3558',
-        padding: 10,
-        borderRadius: 6,
-        marginRight: 10,
-    },
-    centerTextandButtonForModal: {
+    upcomingMovieContainer: {
+        display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginTop: 10,
     },
-    theaterTypeNames:{
-        margin: 10,
+    upcomingBookButton: {
+        backgroundColor: 'yellow',
+        color: 'black',
         padding: 10,
-        borderRadius: 6,
-        borderColor: 'gray',
-        borderWidth: 1,
+        borderRadius: 4,
+        marginLeft: 'auto',
+        marginRight: 0,
+    },
+    upcomingGenre: {
+        marginTop: 5,
+        fontSize: 16,
+        fontWeight: "400",
+        color: "gray",
+    },
+    upcomingButtonText: {
+        color: 'black',
+        fontSize: 16,
+        fontWeight: 'bold',
     }
+
 })
