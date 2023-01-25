@@ -2,7 +2,7 @@ import { ImageBackground, ScrollView, Pressable, StyleSheet, Text, View } from '
 import React from 'react'
 
 const background = {
-    uri: "https://originserver-static1-uat.pvrcinemas.com/newweb/movies/big/1460x600/HO00020779.jpg",
+    uri: "https://stat5.bollywoodhungama.in/wp-content/uploads/2020/08/Pathaan-1-1.jpg",
 }
 
 const Header = () => {
@@ -50,17 +50,17 @@ const Header = () => {
 
                     <View style={styles.centerTextandButtonForModal}>
                         <View>
-                            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>VIKARANT RONA</Text>
-                            <Text style={{ fontSize: 16, fontWeight: '400', color: 'gray', marginTop: 4 }}>U/A • KANNADA</Text>
+                            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>PATHAAN</Text>
+                            <Text style={{ fontSize: 16, fontWeight: '400', color: 'gray', marginTop: 4 }}>2h 26m • HINDI</Text>
                         </View>
 
                         <Pressable style={styles.bookButtonForModal}>
-                            <Text style={{ fontSize: 14, fontWeight: '650', textAlign: "center" }} >BOOK NOW</Text>
+                            <Text style={{ fontSize: 14, fontWeight: '650', textAlign: "center" ,color: 'white' }} >BOOK NOW</Text>
                         </Pressable>
                     </View>
 
 
-                    <Text style={{ marginTop: 8, fontSize: 15, fontWeight: "500" }}>Fantasy, Thriller, Action</Text>
+                    <Text style={{ marginTop: 8, fontSize: 15, fontWeight: "500" }}>2023 ‧ Drama/Mystery</Text>
                 </Pressable>
             </ImageBackground>
 
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         width: '85%'
     },
     bookButtonForModal: {
-        backgroundColor: '#ffc40c',
+        backgroundColor: '#DC3558',
         padding: 10,
         borderRadius: 6,
         marginRight: 10,
